@@ -3,21 +3,15 @@ import Notiflix from 'notiflix';
 import "notiflix/dist/notiflix-3.2.5.min.css";
 import debounce from 'lodash.debounce';
 import fetchCountries from './fetchCountries';
-import countryListTpl from './countryListElement.hbs';
-import countryInfoTpl from './countryInfo.hbs';
+import countryListTpl from '/template/countryListElement.hbs';
+import countryInfoTpl from '/template/countryInfo.hbs';
 
 const DEBOUNCE_DELAY = 300;
-
-
 const searchForm = document.querySelector('input#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo =  document.querySelector('.country-info');
 
-
-
 searchForm.addEventListener('input', debounce(inputSearch, DEBOUNCE_DELAY));
-
-
 
 function inputSearch(evt) {
     const search = evt.target.value.trim();
@@ -25,9 +19,6 @@ function inputSearch(evt) {
         clearMarckup();
         return;
     };
-
-
-
 
 fetchCountries(search)
         .then(country => {
